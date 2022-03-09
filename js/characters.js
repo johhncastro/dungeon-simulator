@@ -8,7 +8,10 @@
 // 2) MAKE METHOD FOR DAMAGE TO CHARACTER - DONE
 // 3) MAKE AN ALERT THAT THE GAME IS OVER IF ONE OF THE CHARACTERS DIES - DONE
 // 4) WRITE JQUERY THAT WHEN EVER YOU CLICK THE CHARACTER (BOX) IT DOES DAMAGE - DONE
-// 5) FIX NUMBER 3 BECAUSE ALERT NO LONGER WORKS
+// 5) FIX NUMBER 3 BECAUSE ALERT NO LONGER WORKS - DONE
+// 6) ADD A RESET BUTTON TO RESET THE PAGE AFTER THE GAME IS OVER - DONE
+// 7) ADD A FOR LOOP TO THE DMG FUNCTION AT SO PLAYERS CAN HAVE A RANDOM FIGHT DMG OUTPUT OF 1-3 -DONE
+// 8)ALIGN ALL PICTURES AND BUTTONS WHERE I WANT THEM AND ADD CSS.
 
 
 var character ={
@@ -99,25 +102,39 @@ var noName ={
 //if the attack var is true use attack else wait
 
 
-// the code below works when the 'mage' red square is clicked
+// the code below works when the 'mage' red square is clicked and alerts when "mage" dies.
 $('.box1').click(function (){
-    $('.dialog').html(character.damage(1))
+    var dmg = Math.floor(Math.random() * 4);
+    if  ($('.dialog').html(character.damage(dmg))){
+        gameOver();
+    }
 });
 
+
+
+//the code below is functional and counts down when the code is pressed which in turn gets an alert
+//when "ghost" dies
 $('.box2').click(function (){
-    $('.dialog2').html(character2.damage(1))
+    var dmg = Math.floor(Math.random() * 4);
+   if  ($('.dialog2').html(character2.damage(dmg))){
+       gameOver();
+   }
 });
 
 
-
+$('.play-again').click(function() {
+    location.reload();
+});
 
 
 
 var characters = [character,character2,noName];
 
-characters.forEach(function (char) {
-    if (char.healthPoints <= 0) {
-        alert('GAME OVER ' + char.type + ' DIED')
-    }
-});
+function gameOver(){
+    characters.forEach(function (char) {
+        if (char.healthPoints <= 0) {
+            alert('GAME OVER ' + char.type + ' DIED')
+        }
+    });
+}
 
