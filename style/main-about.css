@@ -63,8 +63,9 @@ h2{
     text-decoration: none;
     display: flex;
     bottom: 5px;
-    right: 50%;
-    text-align: center;
+    font-family: Alagard;
+    justify-content: center;
+    width: 100%;
 }
 #pixel-art-background{
     max-width: 100%;
