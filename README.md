@@ -7,3 +7,4 @@ v1.01
 
 main fight page now functional each character has random attack dmg output 0 damage to 3 damage. v1.02
 
+![](images/v1.03.png) MAIN PLAY SCREEN FUNCTIONAL ON DOM v1.03
