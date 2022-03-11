@@ -3,3 +3,7 @@
 }
 .box2{
 }
+#play-again-btn{
+    position: absolute;
+   bottom: 10px;
+}
