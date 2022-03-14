@@ -1,3 +1,10 @@
+body{
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: Alagard; src: url('/alagard.ttf');
+}
 .fight-scene{
     /*display: none;*/
     position: fixed;
@@ -21,3 +28,12 @@
 #controlla{
     height: 340px;
 }
+#mage-dialog{
+    color: #dddddd;
+    font-family: Alagard;
+}
+#ghost-dialog{
+    color: #dddddd;
+    font-family: Alagard;
+}
+
