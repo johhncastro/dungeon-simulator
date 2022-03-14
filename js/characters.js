@@ -11,7 +11,19 @@
 // 5) FIX NUMBER 3 BECAUSE ALERT NO LONGER WORKS - DONE
 // 6) ADD A RESET BUTTON TO RESET THE PAGE AFTER THE GAME IS OVER - DONE
 // 7) ADD A FOR LOOP TO THE DMG FUNCTION AT SO PLAYERS CAN HAVE A RANDOM FIGHT DMG OUTPUT OF 1-3 -DONE
-// 8)ALIGN ALL PICTURES AND BUTTONS WHERE I WANT THEM AND ADD CSS.
+// 8)ALIGN ALL PICTURES AND BUTTONS WHERE I WANT THEM AND ADD CSS. - DONE
+// 9) CHANGE SO THAT WHEN CHARACTER DIES IT ALERTS AND THE PLAY AGAIN BUTTON APPEARS
+// 10) make all ability buttons work.
+// 11) maybe find a way to change characters
+// 12) the turn based game could be pvp and could start possibly working on a pve version (most likely will)
+// 13) lower case is cooler ;)
+
+
+
+
+
+
+// below is the 'mage' obj that has all attributes and skills some are in use others are not
 
 
 var character ={
@@ -54,6 +66,9 @@ var character ={
 
 // charcter.catchPhrase('I am Mage');
 
+
+//below is the 'ghost' obj this has all abilities and attributes movement speed has no use currently
+
 var character2 ={
     type: 'Ghost',
     healthPoints: 10,
@@ -73,6 +88,8 @@ var character2 ={
 };
 
 
+
+/// !@##@%$#$%^@#$^#@$R!#$~@$%^#^#$%#!$%!#$&
 
 
 var noName ={
@@ -102,13 +119,21 @@ var noName ={
 //if the attack var is true use attack else wait
 
 
-// the code below works when the 'mage' red square is clicked and alerts when "mage" dies.
+// the code below works when the 'mage' red square is clicked and alerts when "mage" dies. this also is a button that
+// will display to the dome how much dmg was delt and how much health the char has
+//
+
 $('.box1').click(function (){
     var dmg = Math.floor(Math.random() * 4);
     if  ($('.dialog').html(character.damage(dmg))){
         gameOver();
     }
 });
+
+//this btn is the 'mage' passive heal this allows for 2 health points to regen.
+$('.heal-btn').click(function (){
+    $('.dialog').html(character.passiveHeal())
+})
 
 
 
