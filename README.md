@@ -7,8 +7,8 @@ v1.01
 
 main fight page now functional each character has random attack dmg output 0 damage to 3 damage. v1.02
 
-![](images/v1.03.png) MAIN PLAY SCREEN FUNCTIONAL ON DOM v1.03
+![](textures/v1.03.png) MAIN PLAY SCREEN FUNCTIONAL ON DOM v1.03
 
-![](images/main-abt-page.png)
+![](textures/main-abt-page.png)
 
 MAIN ABT PAGE DONE MAIN PAGE IN PROGRESS...
