@@ -12,4 +12,4 @@ main fight page now functional each character has random attack dmg output 0 dam
 ![](textures/main-abt-page.png)
 
 MAIN ABT PAGE DONE MAIN PAGE IN PROGRESS...
-
+lol
