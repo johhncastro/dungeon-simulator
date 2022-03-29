@@ -80,6 +80,9 @@ const character ={
             html += "<img src='/health-textures/Health-10.png'>"
         }
         return  html;
+    },
+    fireballAnimation: function (){
+     return "<img src='/textures/Fireball.gif'>"
     }
 };
 
@@ -124,6 +127,10 @@ const character2 ={
     ghostHeal:function (){
         return (this.type+ ' has healed '+ this.healingPoints + ' HP '+this.type+' now has '+(this.healthPoints = this.healthPoints += this.healingPoints)+ ' HP');
     },
+    slashAnimation: function (){
+        // return window.setTimeout($('#attack').style.display="none",1000)
+        return "<img src='/textures/slash.gif'>"
+    },
 
     getHealth: function (){
         var html = ""
@@ -151,7 +158,8 @@ const character2 ={
             html += "<img src='/health-textures/Health-10.png'>"
         }
         return html;
-    }
+    },
+
 
 };
 
@@ -192,9 +200,9 @@ const noName ={
 
 
 
-// the code below works when the 'mage' is clicked and alerts when "mage" dies. this also is a button that
+// the code below works when the 'Slash' is clicked and alerts when "mage" dies. this also is a button that
 // will display to the dome how much dmg was delt and how much health the char has
-//
+// this is a ghost button
 
 $('.box1').click(function (){
     var dmg = Math.floor(Math.random() * 4);
@@ -203,8 +211,11 @@ $('.box1').click(function (){
         gameOver();
         // the code below makes the health bar interactive
         $(".mage-health").html(character.getHealth());
+        setTimeout($("#attack").html(character2.slashAnimation()),1000)
+
     }
 });
+
 
 //this btn is the 'mage' passive heal this allows for 2 health points to regen.
 $('.heal-btn').click(function (){
@@ -222,18 +233,20 @@ $('.ghost-heal-btn').click(function (){
     $(".ghost-health").html(character2.getHealth());
 })
 
+
+// THIS IS THE FIREBALL BUTTON
 //the code below is functional and counts down when the code is pressed which in turn gets an alert
-//when "ghost" dies
+//when "ghost" dies due to mage fireball attack
 $('.box2').click(function (){
     var dmg = Math.floor(Math.random() * 4);
-   if  ($('.dialog2').html(character2.damage(dmg))){
+        $('.dialog2').html(character2.damage(dmg))
        //the game over function below alerts the page that one of the characters have died this is important else the char health will go negative forever.
        gameOver();
        //the code below makes the health bar interactive
-       $(".ghost-health").html(character2.getHealth())
-   }
-});
+       $(".ghost-health").html(character2.getHealth());
+       $("#attack").html(character.fireballAnimation())
 
+});
 
 
 
@@ -251,9 +264,12 @@ const characters = [character,character2,noName];
 function gameOver(){
     characters.forEach(function (char) {
         if (char.healthPoints <= 0) {
-            $("#game-over").html('<img src="/textures/game-over-animate.gif" style="position: absolute; width: 100%; top: 0px" >')
+            $("#game-over").html('<img src="/textures/game-over-animate.gif" style="position: absolute; width: 100%; top: 0px; height: 1000px" >')
         }
     });
 }
-
+function toggleZoomScreen() {
+    document.body.style.zoom = "80%";
+}
+// toggleZoomScreen()
 
