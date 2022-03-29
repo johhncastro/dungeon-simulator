@@ -11,20 +11,13 @@
 <div style="background-image: url(/textures/fight-bg-2.gif);background-repeat: no-repeat; background-size: 100% 100%;">
     <h1 id="title-header">Dungeon Simulator</h1>
 
-<!--    this is a container for the health bar -->
-    <section class="d-flex justify-content-around">
-        <div class="d-flex justify-content-center mage-health "><img src="/health-textures/Health-10.png"> </div>
-        <div class="d-flex justify-content-center ghost-health"><img src="/health-textures/Health-10.png"> </div>
-    </section>
-<!--    end of health bar section-->
-
 <!--    this is a section for the character img(s) also adding attack div between the two -->
     <section class="d-flex justify-content-around">
 <!--        <img class="fight-scene" src="/images/fight-bg-2.gif">-->
 
 
-        <div class="d-flex justify-content-center pb-5 " ><img src="/textures/mage-lg.png"></div>
-
+        <div class="d-flex justify-content-center pb-5" ><img src="/textures/mage-lg.png"></div>
+        <div id="attack" class="d-flex justify-content-center pb-5" style="width: 256px; height: 256px"></div>
         <div class="d-flex justify-content-center pb-5 "><img src="/textures/Ghost-xl.png/"></div>
     </section>
 </div> <!-- end of container (title-header) -->
@@ -34,7 +27,15 @@
         <div class="dialog2 col-4 text-center" id="ghost-dialog">GHOST</div>
     </section> <!-- end of container (dialog container) -->
 
-    <section style="background-image: url(/textures/controls-bg-final.gif);background-repeat: no-repeat; background-size: 100% 100%;" class="d-flex justify-content-around flex-column" id="controlla">
+    <section style="background-image: url(/textures/controls-bg-final.gif);background-repeat: no-repeat; background-size: 100% 100%;" class="d-flex justify-content-around flex-column pt-5" id="controlla">
+        <!--    this is a container for the health bar -->
+        <section class="d-flex justify-content-around">
+            <div class="d-flex justify-content-center mage-health "><img src="/health-textures/Health-10.png"> </div>
+            <div class="d-flex justify-content-center ghost-health"><img src="/health-textures/Health-10.png"> </div>
+        </section>
+        <!--    end of health bar section-->
+
+
         <div class="d-flex justify-content-around control-panel h-25">
 <!--            <button class="box2 w-25 ">fireball</button>-->
             <img src="/textures/fireball-test-2.png " class="box2">
