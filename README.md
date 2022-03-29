@@ -12,3 +12,5 @@ main fight page now functional each character has random attack dmg output 0 dam
 ![](textures/main-abt-page.png)
 
 MAIN ABT PAGE DONE MAIN PAGE IN PROGRESS...
+the main pvp fight page is done now a pve turn based fighting game is in progress (as another game mode).
+also gonna work on the main home page :) 
