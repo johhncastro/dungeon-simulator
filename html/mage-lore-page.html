@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style/mage-lore.css">
+</head>
+<body style="background-image: url(/textures/bk-static-lg.png); background-repeat: no-repeat; background-position: center; background-attachment: fixed">
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark position-relative w-100">
+
+
+        <!--    this is the parent container of the header-->
+        <div class="container-fluid">
+
+
+            <!--        this is the collapsed version of nav bar when on mobile.-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <a id="brand2"class="navbar-brand"> Dungeon Simulator</a>
+            </button>
+
+
+            <!--        this is all the content of the navbar-->
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a id="brand1" class="navbar-brand" href="#">Dungeon Simulator</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="home-tab" class="nav-link " href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="character-tab" class="nav-link" href="#">Characters</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button id="MachoMan" class="btn btn-outline-danger bg-dark" type="submit"><i class="fa-solid fa-question"></i></button>
+                </form>
+
+                <!--            nav bar code ends here-->
+            </div>
+        </div> <!-- parent container ends here -->
+    </nav>
+</header>
+<!-- this section is the sub header titles -->
+     <section class="container-fluid d-flex justify-content-center">
+             <h1 class="text-center pb-5">The Mage</h1>
+     </section>
+<!--subheader container ends here and the content of the subheaders starts now -->
+     <section class="d-flex align-content-center mx-4">
+        <img class="col-4" src="/textures/mage-lg.png" width="400" height="400" >
+        <p id="lore-dsc" class="text-center col-8 ">The Mage is the main protagonist in your adventure through the treacherous lands of Evil. The Mage was born in a small village called Magmus when he was a child his village got raided, and he needed to flee the village alone. Mage came across the cave of destiny. This cave contained a sacred script to cast spells. Mage has learned how to cast spells and has made it his mission to defeat the Evil Creature of the Dark.</p>
+     </section>
+<!--container for the content ends here-->
+<!--abilities section starts here-->
+<h1 id="abilities-header" class="text-center">Abilities</h1>
+<section class="d-flex">
+    <h3 class="col-4 text-center abil-name">Fireball</h3>
+    <h3 class="col-4 text-center abil-name">Swing Staff</h3>
+    <h3 class="col-4 text-center abil-name">Heal</h3>
+</section>
+<!--the ability headers end here-->
+<!--the container for the ability icons start here-->
+<section class="d-flex">
+    <img src="/textures/fireball-md-btn.png"  class="col-4">
+    <img src="/textures/swing-staff-btn.png" class="col-4">
+    <img src="/textures/heal-btn-static.png" class="col-4">
+</section>
+<!--the container for the ability icons ends here and the ability description container starts here-->
+<section class="d-flex">
+    <p class="col-4 text-center abil-dsc">The fireball is the most reliable attack that Mage knows it is overall good dmg and rarely misses. This attack can do up to 3 damage with a range of 0-3 DMG(this is base dmg with no buffs or leveling).</p>
+    <p class="col-4 text-center abil-dsc">The Swing Staff attack is uses when in a pinch and mage needs some serious damage done to the enemy. This attack is very risky because it has a 60% chance to miss the target and when it does land it takes 1 health however this attack does 6 DMG if it hits. </p>
+    <p class="col-4 text-center abil-dsc">The Heal Ability is unique and special to mage because he is the only character that can heal without needing a healing potion. However, this takes a turn and Mage will not be able to attack that round. Mage heals 2 HP  </p>
+</section>
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="/js/characters.js"></script>
+<script src="https://kit.fontawesome.com/cda6cdb8ba.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
