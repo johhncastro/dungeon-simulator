@@ -4,3 +4,15 @@ body{
     width: 100%;
     height: 100%;
 }
+h1{
+    color: white ;
+    font-family: Alagard;
+}
+a{
+    text-decoration: none;
+    font-family: Alagard;
+}
+#john-the-great{
+    position: fixed;
+    bottom: 5px;
+}
