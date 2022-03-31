@@ -83,6 +83,12 @@ const character ={
     },
     fireballAnimation: function (){
      return "<img src='/textures/Fireball.gif'>"
+    },
+    healAnimation: function (){
+        return "<img src='/textures/mage-heal.gif'>"
+    },
+    resetHealAnimation: function (){
+        return "<img src='/textures/mage-lg.png'>"
     }
 };
 
@@ -164,6 +170,44 @@ const character2 ={
 };
 
 
+const darkKnight = {
+    type: "dark knight",
+    healthPoints: 10,
+    damage:function (num) {
+        return console.log(this.type + ' took ' + num + ' Damage and now has ' + (this.healthPoints = this.healthPoints -= num) + ' HP');
+    },
+    lightAttack: 2,
+    heavyAttack:4,
+    getHealth:function (){
+        var html = ""
+        if (this.healthPoints <= 0){
+            html += "<img src='/health-textures/Health-0.gif'>"
+        } if (this.healthPoints === 1){
+            html += "<img src='/health-textures/Health-1.gif'>"
+        } if (this.healthPoints === 2){
+            html += "<img src='/health-textures/Health-2.gif'>"
+        } if (this.healthPoints === 3){
+            html += "<img src='/health-textures/Health-3.gif'>"
+        } if (this.healthPoints === 4){
+            html += "<img src='/health-textures/Health-4.png'>"
+        } if (this.healthPoints === 5){
+            html += "<img src='/health-textures/Health-5.png'>"
+        } if (this.healthPoints === 6){
+            html += "<img src='/health-textures/Health-6.png'>"
+        } if (this.healthPoints === 7){
+            html += "<img src='/health-textures/Health-7.png'>"
+        } if (this.healthPoints === 8){
+            html += "<img src='/health-textures/Health-8.png'>"
+        } if (this.healthPoints === 9){
+            html += "<img src='/health-textures/Health-9.png'>"
+        } if (this.healthPoints >= 10){
+            html += "<img src='/health-textures/Health-10.png'>"
+        }
+        return  html;
+    },
+}
+
+
 
 /// !@##@%$#$%^@#$^#@$R!#$~@$%^#^#$%#!$%!#$&
 
@@ -177,7 +221,7 @@ const noName ={
         pinataStickLight: Math.floor(Math.random() * 5)+1,
     }],
     damage:function (num){
-        console. log ( noName.type+' took '+ num + ' Damage you now have '+ (this.healthPoints = this.healthPoints -= num)+ ' HP')
+        console. log ( noName.type+' took '+ num + ' Damage and now has '+ (this.healthPoints = this.healthPoints -= num)+ ' HP')
     },
     tacoHeal:function (){
         console.log(this.type+ ' has healed '+ this.healingPoints + ' HP '+this.type+' now has '+(this.healthPoints = this.healthPoints += this.healingPoints)+ ' HP using Passive Heal!')
@@ -194,8 +238,14 @@ const noName ={
 // }
 //if the attack var is true use attack else wait
 
+//function to reset attack img
 
-
+// function timeoutReset(){
+//     return ""
+// }
+// function timeoutTriggerReset(){
+//     return  setTimeout(timeoutReset,1000);
+// }
 
 
 
@@ -211,8 +261,10 @@ $('.box1').click(function (){
         gameOver();
         // the code below makes the health bar interactive
         $(".mage-health").html(character.getHealth());
-        setTimeout($("#attack").html(character2.slashAnimation()),1000)
-
+        $("#attack").html(character2.slashAnimation());
+        // the below code will reset mages heal animation if it its in the process else his animation will keep running
+        $("#mage").html(character.resetHealAnimation());
+        attackTimeout();
     }
 });
 
@@ -223,6 +275,9 @@ $('.heal-btn').click(function (){
     $('.dialog').html(character.passiveHeal());
     // the below code is used to get the health of the mage after the mage has healed
     $(".mage-health").html(character.getHealth());
+    // the below animation will appear when heal btn is clicked
+    $("#mage").html(character.healAnimation())
+    healTimeout();
 })
 
 //this btn is the 'Ghost' heal this allows for 2 health points to regen.
@@ -231,6 +286,8 @@ $('.ghost-heal-btn').click(function (){
     $('.dialog2').html(character2.ghostHeal());
     // the below code is used to get the health of the mage after the mage has healed
     $(".ghost-health").html(character2.getHealth());
+    // the below code will reset mages heal animation if it its in the process else his animation will keep running
+    $("#mage").html(character.resetHealAnimation());
 })
 
 
@@ -245,6 +302,9 @@ $('.box2').click(function (){
        //the code below makes the health bar interactive
        $(".ghost-health").html(character2.getHealth());
        $("#attack").html(character.fireballAnimation())
+        attackTimeout();
+    // the below code will reset mages heal animation if it its in the process else his animation will keep running
+    $("#mage").html(character.resetHealAnimation());
 
 });
 
@@ -259,7 +319,7 @@ $('#game-over').click(function() {
 });
 
 // this is the array of all the characters on the
-const characters = [character,character2,noName];
+const characters = [character,character2,noName,darkKnight];
 
 function gameOver(){
     characters.forEach(function (char) {
@@ -273,3 +333,100 @@ function toggleZoomScreen() {
 }
 // toggleZoomScreen()
 
+
+
+
+
+// the below code is a start for ai in the story page
+// the below is only gonna be story mode code ONLY some above code will be used for the story but for the most part all functionality
+// what this does is pick a random attack either light or heavy the light attack has a 75% chance to hit while the other heavy attack has a 25% chance to hit
+// below is the list that needs to be finished for the ai
+//todo: checklist ==============
+// 1. make ai function that chooses random attack or uses heal potion (done)
+// 2. make the ai work after the mage or whatever character has attacked this will probably involve some sort of set timeout still not too sure on how to get this to work the timeout function is kinda done
+// 3. make it so when ai dies a next level icon appears. or a new character appears
+// 4. make around 5 - 10 enemys before the boss
+// 5. boss should be hard to kill around 20 hp
+// 6  possiblly make a leveling system or add buffs
+// 7 finsih game ez clap
+
+const storyChars = [character]
+
+
+let darkKnightAI = [];
+
+darkKnightAI[0] = function(){
+     console.log(character.damage(darkKnight.lightAttack));
+     mageDies()
+}
+darkKnightAI[1] = function(){
+     console.log(character.damage(darkKnight.lightAttack));
+     mageDies()
+}
+darkKnightAI[2] = function(){
+     console.log(character.damage(darkKnight.lightAttack));
+     mageDies()
+}
+darkKnightAI[3] = function(){
+     console.log(character.damage(darkKnight.lightAttack));
+     mageDies()
+}
+darkKnightAI[4] = function(){
+     console.log(character.damage(darkKnight.heavyAttack));
+     mageDies()
+
+}
+// this function is a timeout trigger so that when the button to attack is clicked after 5 sec the ai will attack.
+
+
+function timeoutTriggerDKAttack(){
+    setTimeout(darkKnightRandomAttack,5000);
+}
+// this code below chooses a random attack or heal from the array above
+function darkKnightRandomAttack(){
+    let rand = parseInt(Math.random()*darkKnightAI.length);
+    darkKnightAI[rand]();
+}
+
+
+// below are gonna most if not all TIMEOUT FUNCTIONS!
+
+// this function is soooooo huge and important for the rest of this project I will need to refactor a bunch of code to make the attack or heal timeouts work but the fireball timeout works!!!!!
+function resetAttack(){
+    return "<img src='/textures/256x256.png'>"
+}
+function resetMage(){
+    return "<img src='/textures/mage-lg.png'>"
+}
+function attackTimeout(){
+    window.setTimeout("document.getElementById('attack').innerHTML = resetAttack();", 500)
+}
+function healTimeout(){
+    window.setTimeout("document.getElementById('mage').innerHTML = resetMage();", 700)
+}
+
+
+
+// below is code for the ai to attack after 5 seconds of the button being clicked
+$("#darkTest").click(function (){
+    timeoutTriggerDKAttack();
+});
+
+$("#fireball-story").click(function (){
+    var dmg = Math.floor(Math.random() * 5);
+    darkKnight.damage(dmg);
+    $("#attack").html(character.fireballAnimation())
+    timeoutTriggerDKAttack();
+    mageDies();
+})
+
+
+function mageDies(){
+    storyChars.forEach(function (char) {
+        if (char.healthPoints <= 0) {
+            $("#game-over").html('<img src="/textures/game-over-animate.gif" style="position: absolute; width: 100%; top: 0px; height: 1000px" >')
+        }
+    });
+}
+
+// setTimeout(darkKnightRandomAttack,5000)
