@@ -324,7 +324,7 @@ const characters = [character,character2,noName,darkKnight];
 function gameOver(){
     characters.forEach(function (char) {
         if (char.healthPoints <= 0) {
-            $("#game-over").html('<img src="/textures/game-over-animate.gif" style="position: absolute; width: 100%; top: 0px; height: 1000px" >')
+            $("#game-over").html('<img src="/textures/game-over-animate.gif" style="position: absolute; width: 100%; top: 0; height: 1000px" >')
         }
     });
 }
@@ -345,10 +345,13 @@ function toggleZoomScreen() {
 // 1. make ai function that chooses random attack or uses heal potion (done)
 // 2. make the ai work after the mage or whatever character has attacked this will probably involve some sort of set timeout still not too sure on how to get this to work the timeout function is kinda done
 // 3. make it so when ai dies a next level icon appears. or a new character appears
-// 4. make around 5 - 10 enemys before the boss
+// 4. make around 5 - 10 enemy's before the boss
 // 5. boss should be hard to kill around 20 hp
 // 6  possiblly make a leveling system or add buffs
-// 7 finsih game ez clap
+// 7 make a cooldown to press another attack btn this will make buttons static once able to attack btns will become interactive
+// 8 figure out how to reset enemy health (or make health go over 10HP) and insert a new character
+// 9 make a enemy change and background change once defeated. this is very very essential to figure out because if not a TON of html pages are going to have to be made.
+
 
 const storyChars = [character]
 
@@ -413,9 +416,14 @@ $("#darkTest").click(function (){
 });
 
 $("#fireball-story").click(function (){
-    var dmg = Math.floor(Math.random() * 5);
+    // the below 2 lines of code picks a random number between 0 and 3 and uses the damage method to deal dmg
+    var dmg = Math.floor(Math.random() * 3);
     darkKnight.damage(dmg);
+    // this line of code triggers the fireball animation
     $("#attack").html(character.fireballAnimation())
+    // this line of code below will cancel the animation after 500 ms
+    attackTimeout();
+    // the line of code below makes the AI attack the player 5 seconds after they have attacked
     timeoutTriggerDKAttack();
     mageDies();
 })
@@ -428,5 +436,6 @@ function mageDies(){
         }
     });
 }
+
 
 // setTimeout(darkKnightRandomAttack,5000)
