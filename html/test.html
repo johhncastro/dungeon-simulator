@@ -1,10 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+  <script>
+
+      // Mage class
+      class Mage {
+          constructor() {
+              // Set the mage's starting hp to 10
+              this.hp = 10;
+
+              // Set the mage's abilities
+              this.abilities = [
+                  {
+                      name: "Fireball",
+                      damage: 5
+                  },
+                  {
+                      name: "Ice Shard",
+                      damage: 4
+                  },
+                  {
+                      name: "Lightning Bolt",
+                      damage: 3
+                  },
+                  {
+                      name: "Healing Touch",
+                      damage: -2
+                  }
+              ];
+          }
+
+          // Method to attack with a specified ability
+          attack(abilityIndex) {
+              // Get the selected ability
+              const ability = this.abilities[abilityIndex];
+
+              // Check if the ability exists
+              if (ability) {
+                  // Display a message on the HTML page showing the ability used
+                  const message = document.getElementById("message");
+                  message.innerHTML = `The mage uses ${ability.name}!`;
+
+                  // Set the message to be hidden after 4 seconds
+                  setTimeout(function() {
+                      message.innerHTML = "";
+                  }, 4000);
+
+                  // Return the damage done by the ability
+                  return ability.damage;
+              }
+          }
+      }
+
+
+
+
+      const Dragon = {
+      health: 10,
+      abilities: ['fire breath', 'wing attack', 'tail swipe', 'claws'],
+
+      // Method to attack with a random ability
+      attack: function() {
+        // Choose a random ability
+        const randomIndex = Math.floor(Math.random() * this.abilities.length);
+        const randomAbility = this.abilities[randomIndex];
+
+        // Calculate the damage of the attack
+        const damage = Math.ceil(Math.random() * 4);
+
+        console.log(`The dragon used its ${randomAbility} ability and did ${damage} damage!`);
+
+        // Create an element to display the attack
+        const attackElement = document.createElement('div');
+        attackElement.innerHTML = `The dragon used its ${randomAbility} ability!`;
+        document.body.appendChild(attackElement);
+
+        // Remove the element after 4 seconds
+        setTimeout(() => {
+          document.body.removeChild(attackElement);
+        }, 4000);
+
+        return damage;
+      }
+    };
+
+    // Test the Dragon object
+    const myDragon = Object.create(Dragon);
+    myDragon.attack(); // Output: The dragon used its [random ability] ability and did [random damage] damage!
+
+  </script>
+
 </body>
 </html>
